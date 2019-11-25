@@ -6,19 +6,24 @@ import { HomeComponent } from './components/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CommonModule} from "@angular/common";
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
+import { ToDoComponent } from './components/to-do/to-do.component';
+import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    ToDoComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
