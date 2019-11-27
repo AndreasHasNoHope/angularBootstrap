@@ -10,7 +10,12 @@ import {error} from "util";
 export class ToDoComponent implements OnInit {
   public firstName: string = "Enzo";
   public lastName: string = "Tsim";
-  public numbs: number[] = [1,2,3,4,5,6,7];
+  public search: string= "";
+  public numbs: number[] = [1, 2, 3, 4, 5, 6, 7];
+
+  // Model form Variablew for new Task
+  public taskTitle: string;
+  public taskDueDate: Date;
 
 
   public swalOptions = {
@@ -30,12 +35,12 @@ export class ToDoComponent implements OnInit {
       dueDate: new Date("2019-11-28T20:30:00.000Z"),
       completed: false,
       title: "Learn JavaScript"
-    },{
+    }, {
       _id: "3",
       dueDate: new Date("2019-11-28T20:30:00.000Z"),
       completed: false,
       title: "Learn FireBase"
-    },{
+    }, {
       _id: "4",
       dueDate: new Date("2019-11-28T20:30:00.000Z"),
       completed: false,
@@ -55,15 +60,19 @@ export class ToDoComponent implements OnInit {
     this.firstName = parts[0];
     this.lastName = parts[1];
   }
-  get filteredNumbers(){
-    return this.numbs.filter(numb => numb>4);
+
+  get filteredNumbers() {
+    return this.numbs.filter(numb => numb > 4);
   }
+
   get completedTasks() {
     return this.todos.filter(task => task.completed === true);
   }
-  get uncompletedTasks(){
+
+  get uncompletedTasks() {
     return this.todos.filter(task => task.completed === false);
   }
+
   ngOnInit() {
   }
 
@@ -75,4 +84,17 @@ export class ToDoComponent implements OnInit {
   public completeTask(task: ITask) {
     task.completed = true;
   }
+
+  public addTask() {
+    let task={
+      _id: (this.todos.length+1).toString(),
+    title: this.taskTitle,
+    dueDate: this.taskDueDate,
+    completed: false
+    };
+    this.todos.push(task);
+  }
+
+
+
 }
